@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const PORT = 5000;
-const viewDirectory =  `${__dirname}\\views`;
+const viewDirectory =  `${__dirname}/views`;
 console.log(viewDirectory);
 
 app.set("view engine", "ejs");

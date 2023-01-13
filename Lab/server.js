@@ -6,7 +6,7 @@ const PORT = 5000;
 const viewDirectory = `${__dirname}/views`;
 console.log(viewDirectory);
 const cors = require("cors");
-const fetch = require("node-fetch");
+//const fetch = require("node-fetch");
 //import fetch from "node-fetch";
 
 app.use(cors());
@@ -53,44 +53,44 @@ app.post("/chatbot", (req, res) => {
         //     }
         // })
 
-        // axios.get(`http://numbersapi.com/${number}?type=trivia`)
-        //     .then(response => {
-        //         if (response.ok) {
-        //             return response.text();
-        //         }
-        //     })
-        //     .then(textData => {
-        //         console.log(textData);
-        //         res.json({ 
-        //             text: textData
-        //         })
-        //     })
-        //     .catch(error => {
-        //         res.json({
-        //             text: "there has been an error processing the file."
-        //         })
-        //     })
-
-
-        fetch(`http://numbersapi.com/${number}`)
+        axios.get(`http://numbersapi.com/${number}?type=trivia`)
             .then(response => {
                 if (response.ok) {
-                    console.log(response);
                     return response.text();
                 }
             })
             .then(textData => {
                 console.log(textData);
-                res.json({
+                res.json({ 
                     text: textData
                 })
             })
-
             .catch(error => {
                 res.json({
                     text: "there has been an error processing the file."
                 })
             })
+
+
+        // fetch(`http://numbersapi.com/${number}`)
+        //     .then(response => {
+        //         if (response.ok) {
+        //             console.log(response);
+        //             return response.text();
+        //         }
+        //     })
+        //     .then(textData => {
+        //         console.log(textData);
+        //         res.json({
+        //             text: textData
+        //         })
+        //     })
+
+        //     .catch(error => {
+        //         res.json({
+        //             text: "there has been an error processing the file."
+        //         })
+        //     })
     }
     else {
         res.json({

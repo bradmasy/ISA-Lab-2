@@ -6,8 +6,8 @@ const PORT = 5000;
 const viewDirectory = `${__dirname}/views`;
 console.log(viewDirectory);
 const cors = require("cors");
-//const fetch = require("node-fetch");
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
+//import fetch from "node-fetch";
 
 app.use(cors());
 app.set("view engine", "ejs");

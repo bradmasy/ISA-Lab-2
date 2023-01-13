@@ -31,7 +31,6 @@ submitButton.addEventListener("click", (event) => {
         .then(data => {
             console.log(data);
 
-
             $("#number-responses").append(
                 `<div class="content">
                 <div class="inner">
@@ -45,10 +44,7 @@ submitButton.addEventListener("click", (event) => {
             $(document).on('click', '.remove', function () {
                 $(this).parent().remove();
             });
-
-            
         })
-
 });
 
 

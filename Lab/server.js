@@ -70,7 +70,7 @@ app.post("/chatbot", (req, res) => {
         //     })
 
 
-        fetch(`http://numbersapi.com/${number}?type=trivia`)
+        fetch(`http://numbersapi.com/${number}`)
             .then(response => {
                 if (response.ok) {
                     console.log(response);

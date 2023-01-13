@@ -53,14 +53,17 @@ app.post("/chatbot", (req, res) => {
         //     }
         // })
 
-        axios.get(`http://numbersapi.com/${number}?type=trivia`)
+        axios.get(`http://numbersapi.com/${number}`)
             .then(response => {
-                if (response.ok) {
-                    return response.text();
-                }
+                console.log(response);
+                console.log("data "+response.data);
+                
+                    console.log("here");
+                    return response.data;
+                
             })
             .then(textData => {
-                console.log(textData);
+                console.log("data: " +textData);
                 res.json({ 
                     text: textData
                 })

@@ -21,6 +21,26 @@ submitButton.addEventListener("click", (event) => {
             message: message
         })
     }
+
+    // $.ajax({
+    //     url: "/chatbot",
+    //     method: "POST",
+    //     data: post,
+    //     dataType: "json",
+    //     success: function (data) {
+    //         console.log(data);
+    //         responseArea.innerHTML += 
+    //         `<div class="content" id=${id}>
+    //             <div class="inner">
+    //                 <i>${data.text}</i> 
+    //                 <button class="remove" type="button">
+    //                     Remove
+    //                 </button>
+    //             </div>
+    //         </div>`;
+    //     }
+    // })
+
     fetch("/chatbot", post)
         .then(response => {
             console.log(response);

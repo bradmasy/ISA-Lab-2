@@ -5,7 +5,9 @@ const app = express();
 const PORT = 5000;
 const viewDirectory = `${__dirname}/views`;
 console.log(viewDirectory);
+const cors = require("cors");
 
+app.use(cors());
 app.set("view engine", "ejs");
 app.set('views', viewDirectory); // sets the views to the views folder for lookup for pages
 app.use(bodyParser.urlencoded());
@@ -26,47 +28,67 @@ app.post("/chatbot", (req, res) => {
     console.log("Request recieved");
 
     let message = req.body.message;
+    console.log(req.body);
     console.log(`Message recieved: ${message}`);
     let number = message.match(/\d+/); // match for any number.
 
     if (number) {
 
-        axios.get(`http://numbersapi.com/${number}?type=trivia`)
-            .then(response => {
-                if (response.ok) {
-                    return response.text();
-                }
-            })
-            .then(textData => {
+        // $.ajax({
+        //     url: `http://numbersapi.com/${number}?type=trivia`,
+        //     method: "GET",
+        //     dataType: "json",
+        //     success: function (data) {
+        //         console.log(data);
+        //         res.json({
+        //             text: data
+        //         })
+        //     },
+        //     error: function (error) {
+        //         res.json({
+        //             text: "there has been an error processing the file."
+        //         })
+        //     }
+        // })
 
-                res.json({
-                    text: textData
-                })
-            })
-            .catch(error => {
-                res.json({
-                    text: "there has been an error processing the file."
-                })
-            })
-
-
-        // fetch(`http://numbersapi.com/${number}?type=trivia`)
+        // axios.get(`http://numbersapi.com/${number}?type=trivia`)
         //     .then(response => {
         //         if (response.ok) {
         //             return response.text();
         //         }
         //     })
         //     .then(textData => {
-        //         res.json({
+        //         console.log(textData);
+        //         res.json({ 
         //             text: textData
         //         })
         //     })
-
         //     .catch(error => {
         //         res.json({
         //             text: "there has been an error processing the file."
         //         })
         //     })
+
+
+        fetch(`http://numbersapi.com/${number}?type=trivia`)
+            .then(response => {
+                if (response.ok) {
+                    console.log(response);
+                    return response.text();
+                }
+            })
+            .then(textData => {
+                console.log(textData);
+                res.json({
+                    text: textData
+                })
+            })
+
+            .catch(error => {
+                res.json({
+                    text: "there has been an error processing the file."
+                })
+            })
     }
     else {
         res.json({

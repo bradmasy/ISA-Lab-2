@@ -40,8 +40,10 @@ body{
 .content .inner{
     display: flex;
     flex-direction: row;
+    
     background-color: lightblue;
-    justify-content: center;
+    justify-content: space-between;
+    text-align: center;
 
     width: 75%;
     margin-top: 5px;
